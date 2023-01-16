@@ -9,6 +9,8 @@ Camera::Camera(int width, int height, glm::vec3 position)
 	Position = position;
 }
 
+
+
 void Camera::updateMatrix(float FOVdeg, float nearPlane, float farPlane)
 {
 	// Initializes matrices since otherwise they will be the null matrix
@@ -59,7 +61,22 @@ void Camera::Inputs(GLFWwindow* window)
 	{
 		Position += speed * -Up;
 	}
-	if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
+	if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
+	{
+		Position = glm::vec3(0.1f, 0.7f, -3.0f);
+		Orientation = glm::vec3(0.0f, 0.0f, 1.0f);
+	}
+	if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+	{
+		Position = glm::vec3(0.1f, 0.7f, 3.0f);
+		Orientation = glm::vec3(0.0f, 0.0f, -1.0f);
+	}
+	if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
+	{
+		Position = glm::vec3(3.0f, 0.7f, 1.0f);
+		Orientation = glm::vec3(-10.0f, 0.0f, -4.0f);
+	}
+    if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
 	{
 		speed = 0.001f;
 	}

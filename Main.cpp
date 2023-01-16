@@ -7,8 +7,10 @@ namespace fs = std::filesystem;
 
 
 
-const unsigned int width = 1920;
-const unsigned int height = 1080;
+const unsigned int width = 1600;
+const unsigned int height = 900;
+
+
 
 
 
@@ -46,6 +48,7 @@ unsigned int skyboxIndices[] =
 	3, 7, 6,
 	6, 2, 3
 };
+
 
 
 
@@ -117,7 +120,9 @@ int main()
 
 
 	// Creates camera object
-	Camera camera(width, height, glm::vec3(0.0f, 0.0f, 2.0f));
+	Camera camera(width, height, glm::vec3(0.1f, 0.7f, 3.0f));
+
+	
 
 
 	//get path for models
@@ -127,6 +132,16 @@ int main()
 	std::string parentDir2 = (fs::current_path().fs::path::parent_path()).string();
 	std::string modelPath2 = "/Resources/All/model/Stanford Bunny/scene.gltf";
 
+	std::string parentDir3 = (fs::current_path().fs::path::parent_path()).string();
+	std::string modelPath3 = "/Resources/All/model/Stanford Bunny/Pawn.gltf";
+
+	std::string parentDir4 = (fs::current_path().fs::path::parent_path()).string();
+	std::string modelPath4 = "/Resources/All/model/Stanford Bunny/King.gltf";
+
+	std::string parentDir5 = (fs::current_path().fs::path::parent_path()).string();
+	std::string modelPath5 = "/Resources/All/model/Stanford Bunny/Board.gltf";
+	
+
 	
 
 
@@ -134,7 +149,9 @@ int main()
 	// Load in model from path
 	Model model((parentDir + modelPath).c_str());
 	Model model2((parentDir2 + modelPath2).c_str());
-
+	Model model3((parentDir3 + modelPath3).c_str());
+	Model model4((parentDir4 + modelPath4).c_str());
+	Model model5((parentDir5 + modelPath5).c_str());
 
 
 	
@@ -185,7 +202,7 @@ int main()
 	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
 
 
-	// loop through each texture and map them to the cubve
+	// loop through each texture and map them to the cube
 	for (unsigned int i = 0; i < 6; i++)
 	{
 		int width, height, nrChannels;
@@ -230,6 +247,7 @@ int main()
 			std::string FPS = std::to_string((1.0 / timeDiff) * counter);
 			std::string ms = std::to_string((timeDiff / counter) * 1000);
 			std::string newTitle = "Window - " + FPS + "FPS / " + ms + "ms";
+			
 			glfwSetWindowTitle(window, newTitle.c_str());
 
 			// resets times and counter
@@ -250,12 +268,18 @@ int main()
 		camera.Inputs(window);
 		// updates and exports the camera matrix to the Vertex Shader
 		camera.updateMatrix(45.0f, 0.1f, 100.0f);
-
+		
 
 		// draw the chess model
 		model.Draw(shaderProgram, camera);
 		model2.Draw(shaderProgram, camera);
-
+		model3.Draw(shaderProgram, camera);
+		model4.Draw(shaderProgram, camera);
+			
+	    
+		
+		
+		
 		
 
 		
@@ -294,6 +318,10 @@ int main()
 
 
 
+
+
+
+
 	// remove used system and terminate
 	shaderProgram.Delete();
 	skyboxShader.Delete();
@@ -301,3 +329,7 @@ int main()
 	glfwTerminate();
 	return 0;
 }
+
+
+
+

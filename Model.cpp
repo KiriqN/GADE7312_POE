@@ -16,6 +16,8 @@ Model::Model(const char* file)
 
 void Model::Draw(Shader& shader, Camera& camera)
 {
+
+	
 	// Go over all meshes and draw each one
 	for (unsigned int i = 0; i < meshes.size(); i++)
 	{
