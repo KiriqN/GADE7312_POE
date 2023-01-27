@@ -24,6 +24,20 @@ uniform vec3 lightPos;
 // Gets the position of the camera from the main function
 uniform vec3 camPos;
 
+uniform vec3 LightDir;
+
+
+
+struct Light 
+{
+  //vec3 position;
+  vec3 direction;
+
+
+};
+
+uniform Light light;
+
 
 vec4 pointLight()
 {	
@@ -42,6 +56,7 @@ vec4 pointLight()
 	// diffuse lighting
 	vec3 normal = normalize(Normal);
 	vec3 lightDirection = normalize(lightVec);
+	//vec3 lightDirection = normalize(-light.direction);
 	float diffuse = max(dot(normal, lightDirection), 0.0f);
 
 	// specular lighting
@@ -107,4 +122,9 @@ void main()
 {
 	// outputs final color
 	FragColor = direcLight();
+
 }
+
+
+
+ 

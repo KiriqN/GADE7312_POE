@@ -2,8 +2,10 @@
 #include<filesystem>
 namespace fs = std::filesystem;
 //------------------------------
-
+#include <ft2build.h>
+#include FT_FREETYPE_H
 #include"Model.h"
+
 
 
 
@@ -76,6 +78,7 @@ int main()
 
 
 	gladLoadGL();
+	
 	glViewport(0, 0, width, height);
 
 	
@@ -90,13 +93,20 @@ int main()
 
 	// light color and position
 	glm::vec4 lightColor = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
-	glm::vec3 lightPos = glm::vec3(0.5f, 0.5f, 0.5f);
+	glm::vec3 lightPos = glm::vec3(0.5f, 0.5f, -30.0f);
+
+	glm::vec3 spotLight = glm::vec3(100.5f, 0.5f, -30.0f);
+	//glm::vec3 lightDir = glm::vec3(10.5f, 10.5f, -30.0f);
 
 	
 
 	shaderProgram.Activate();
 	glUniform4f(glGetUniformLocation(shaderProgram.ID, "lightColor"), lightColor.x, lightColor.y, lightColor.z, lightColor.w);
 	glUniform3f(glGetUniformLocation(shaderProgram.ID, "lightPos"), lightPos.x, lightPos.y, lightPos.z);
+	glUniform3f(glGetUniformLocation(shaderProgram.ID, "spotLight"), lightPos.x, lightPos.y, lightPos.z);
+
+	//glUniform3f(glGetUniformLocation(shaderProgram.ID, "lightDir"), lightDir.x, lightDir.y, lightDir.z);
+
 	skyboxShader.Activate();
 	glUniform1i(glGetUniformLocation(skyboxShader.ID, "skybox"), 0);
 

@@ -1,0 +1,2 @@
+C:\Users\ethan\Documents\Designs Spammed\opengl-tutorials-main\opengl-tutorials-main\YoutubeOpenGL 19 - Cubemaps & Skyboxes\x64\Debug\YoutubeOpenGL.exe
+C:\Users\ethan\Documents\Designs Spammed\opengl-tutorials-main\opengl-tutorials-main\GADE7312\x64\Debug\YoutubeOpenGL.exe

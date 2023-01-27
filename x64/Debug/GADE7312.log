@@ -1,0 +1,4 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Msbuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (YoutubeOpenGL.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  Main.cpp
+glfw3.lib(win32_window.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(win32_window.obj)' or at 'C:\Users\jared\OneDrive\Documents\GitHub\GADE7312POE\GADE_MAIN\GADE7312\x64\Debug\glfw.pdb'; linking object as if no debug info
+  GADE7312.vcxproj -> C:\Users\jared\OneDrive\Documents\GitHub\GADE7312POE\GADE_MAIN\GADE7312\x64\Debug\GADE7312.exe

@@ -1,5 +1,7 @@
 #include"Camera.h"
 
+bool CameraLock = false;
+
 
 
 Camera::Camera(int width, int height, glm::vec3 position)
@@ -76,7 +78,8 @@ void Camera::Inputs(GLFWwindow* window)
 		Position = glm::vec3(3.0f, 0.7f, 1.0f);
 		Orientation = glm::vec3(-10.0f, 0.0f, -4.0f);
 	}
-    if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
+	
+	if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
 	{
 		speed = 0.001f;
 	}
@@ -84,6 +87,37 @@ void Camera::Inputs(GLFWwindow* window)
 	{
 		speed = 0.001f;
 	}
+
+	if (glfwGetKey(window, GLFW_KEY_TAB) == GLFW_PRESS && CameraLock == false)
+	{
+		
+			CameraLock = true;
+			printf("I have been camera locked");
+		
+	}
+
+	else if (glfwGetKey(window, GLFW_KEY_CAPS_LOCK) == GLFW_PRESS && CameraLock == true)
+	{
+	      
+			CameraLock = false;
+			printf("I have been unlocked");
+		
+	}
+
+	if (CameraLock == true)
+	{
+		speed = 0.000f;
+		firstClick == false;
+
+	}
+
+	if (CameraLock == false)
+	{
+		speed = 0.001f;
+		firstClick == true;
+	}
+
+
 
 
 	// Handles mouse inputs

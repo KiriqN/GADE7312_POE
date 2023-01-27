@@ -14,6 +14,8 @@ Model::Model(const char* file)
 	traverseNode(0);
 }
 
+
+
 void Model::Draw(Shader& shader, Camera& camera)
 {
 
